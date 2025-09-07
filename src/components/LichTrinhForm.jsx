@@ -1,14 +1,20 @@
-import { useState, useEffect } from 'react';
-import { getLastLichTrinhId, getChiBo } from '../controller/DataControl';
+import { useState, useEffect } from "react";
+import { getLastLichTrinhId, getChiBo } from "../controller/DataControl";
 
-const LichTrinhForm = ({ isOpen, onClose, onSubmit, title, initialData = null }) => {
+const LichTrinhForm = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  title,
+  initialData = null,
+}) => {
   const [formData, setFormData] = useState({
-    lich_trinh_id: '',
-    ma_chi_bo: '',
-    tieu_de: '',
-    noi_dung: '',
-    thoi_gian: '',
-    dia_diem: ''
+    lich_trinh_id: "",
+    ma_chi_bo: "",
+    tieu_de: "",
+    noi_dung: "",
+    thoi_gian: "",
+    dia_diem: "",
   });
 
   const [chiBoList, setChiBoList] = useState([]);
@@ -18,9 +24,9 @@ const LichTrinhForm = ({ isOpen, onClose, onSubmit, title, initialData = null })
     const generateLichTrinhId = async () => {
       if (isOpen && !initialData) {
         const newId = await getLastLichTrinhId();
-        setFormData(prev => ({
+        setFormData((prev) => ({
           ...prev,
-          lich_trinh_id: newId
+          lich_trinh_id: newId,
         }));
       }
     };
@@ -49,9 +55,9 @@ const LichTrinhForm = ({ isOpen, onClose, onSubmit, title, initialData = null })
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -191,4 +197,4 @@ const LichTrinhForm = ({ isOpen, onClose, onSubmit, title, initialData = null })
   );
 };
 
-export default LichTrinhForm; 
+export default LichTrinhForm;

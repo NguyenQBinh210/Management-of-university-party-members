@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 import ButtonEdit from "../../../components/ButtonEdit";
 import ButtonDelete from "../../../components/ButtonDelete";
 import { exportDangVienListToExcel } from "../../../controller/ExportData";
+import LoadingSpinner from "../../../components/LoadingSpinner";
+import AnimatedButton from "../../../components/AnimatedButton";
 
 const DangVien = () => {
   const [list, setList] = useState([]);
@@ -80,18 +82,20 @@ const DangVien = () => {
   }, [searchText]);
 
   return (
-    <div className="p-8 bg-gradient-to-br from-green-50 to-white rounded-xl shadow-lg">
+    <div className="p-8 bg-gradient-to-br from-green-50 to-white rounded-xl shadow-lg animate-fade-in-up">
       <div className="flex  justify-between mb-6 gap-4 ">
-        <h1 className="lg:text-3xl text-xl font-extrabold text-green-700 tracking-tight">
+        <h1 className="lg:text-3xl text-xl font-extrabold text-green-700 tracking-tight animate-slide-in-down">
           Danh sách Đảng viên
         </h1>
-        <div className="flex items-center gap-2">
-          <button
+        <div className="flex items-center gap-2 animate-fade-in-right">
+          <AnimatedButton
             onClick={handleExportExcel}
-            className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition shadow-md"
+            variant="primary"
+            size="medium"
+            className="hover-lift"
           >
             Xuất Excel
-          </button>
+          </AnimatedButton>
           <ButtonAdd
             onClick={() => {
               setSelectedDangVien(null);
@@ -112,44 +116,24 @@ const DangVien = () => {
         initialData={selectedDangVien}
       />
 
-      <div className="relative mb-6 max-w-md">
+      <div className="relative mb-6 max-w-md animate-fade-in-up animate-stagger-1">
         <input
           type="text"
           placeholder="🔍 Tìm kiếm theo tên đảng viên..."
-          className="w-full pl-10 pr-4 py-2 rounded-lg border border-green-200 focus:border-green-500 focus:ring-2 focus:ring-green-100 transition outline-none shadow-sm bg-white"
+          className="w-full pl-10 pr-4 py-2 rounded-lg border border-green-200 focus:border-green-500 focus:ring-2 focus:ring-green-100 transition outline-none shadow-sm bg-white input-focus"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center py-10">
-          <svg
-            className="animate-spin h-8 w-8 text-green-500 mr-2"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="4"
-            ></circle>
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8v8z"
-            ></path>
-          </svg>
-          <span className="text-green-600 font-medium">
-            Đang tải dữ liệu...
-          </span>
-        </div>
+        <LoadingSpinner 
+          size="large" 
+          color="green" 
+          text="Đang tải dữ liệu đảng viên..." 
+        />
       ) : (
-        <div className="overflow-x-auto rounded-lg shadow text-[12px] sm:text-sm md:text-base lg:text-[16px]">
+        <div className="overflow-x-auto rounded-lg shadow text-[12px] sm:text-sm md:text-base lg:text-[16px] animate-fade-in-up animate-stagger-2">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg">
             <thead>
               <tr className="bg-green-100 text-green-700">
@@ -180,9 +164,13 @@ const DangVien = () => {
                 list.map((dv, idx) => (
                   <tr
                     key={dv.ma_dang_vien}
-                    className={`transition hover:bg-green-50 ${
+                    className={`transition hover:bg-green-50 hover-lift ${
                       idx % 2 === 0 ? "bg-white" : "bg-green-50/30"
                     }`}
+                    style={{
+                      animationDelay: `${idx * 0.05}s`,
+                      animation: 'fadeInUp 0.5s ease-out forwards'
+                    }}
                   >
                     <td className="px-3 py-2 border-b border-gray-100">
                       {dv.ma_dang_vien}
@@ -206,20 +194,24 @@ const DangVien = () => {
                       {dv.trang_thai}
                     </td>
                     <td className="px-3 py-2 border-b border-gray-100 text-center space-x-2">
-                      <button
+                      <AnimatedButton
                         onClick={() => handleEdit(dv)}
-                        className="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded"
+                        variant="warning"
+                        size="small"
+                        className="hover-scale"
                       >
                         <ButtonEdit />
-                      </button>
+                      </AnimatedButton>
                     </td>
                     <td className="px-3 py-2 border-b border-gray-100 text-center space-x-2">
-                      <button
+                      <AnimatedButton
                         onClick={() => handleDelete(dv.ma_dang_vien)}
-                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                        variant="danger"
+                        size="small"
+                        className="hover-scale"
                       >
                         <ButtonDelete />
-                      </button>
+                      </AnimatedButton>
                     </td>
                   </tr>
                 ))

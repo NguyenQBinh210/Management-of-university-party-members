@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../auth/AuthProvider";
+import AnimatedButton from "../../components/AnimatedButton";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -27,28 +28,31 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[url('https://www.dangvien.vn/sinhhd/static/media/trongdong.7352eee78f369952b777.png')] bg-cover bg-center bg-no-repeat">
+    <div className="min-h-screen bg-[url('https://www.dangvien.vn/sinhhd/static/media/trongdong.7352eee78f369952b777.png')] bg-cover bg-center bg-no-repeat relative overflow-hidden">
+      {/* Animated background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-transparent to-red-800/20 animate-pulse-slow"></div>
+      
       {/* Container centered */}
-      <div className="flex flex-1 justify-center items-center px-4 py-12 sm:py-24">
-        <div className="bg-white rounded-2xl shadow-lg max-w-5xl w-full overflow-hidden flex flex-col md:flex-row">
+      <div className="flex flex-1 justify-center items-center px-4 py-12 sm:py-24 relative z-10">
+        <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full overflow-hidden flex flex-col md:flex-row animate-scale-in hover-lift">
           {/* Left image */}
-          <div className="hidden md:block md:w-1/2">
+          <div className="hidden md:block md:w-1/2 animate-fade-in-left">
             <img
               src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b07069a4-1082-4eac-9eb2-1cf9b74dbe72.png"
               alt="Vietnamese red flag waving with yellow hammer and sickle symbol"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover-scale transition-transform duration-500"
               loading="lazy"
             />
           </div>
 
           {/* Right form */}
-          <div className="w-full md:w-1/2 p-8 md:p-14 flex flex-col justify-center">
+          <div className="w-full md:w-1/2 p-8 md:p-14 flex flex-col justify-center animate-fade-in-right">
             {/* Logo */}
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-6 animate-bounce-in">
               <img
                 src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6d3baf7b-0694-4d7e-b5e5-55da30e161b3.png"
                 alt="Sổ Tay Đảng Viên logo icon"
-                className="w-16 h-16 rounded-lg shadow-md object-contain"
+                className="w-16 h-16 rounded-lg shadow-md object-contain hover-scale animate-float"
                 loading="lazy"
                 onError={(e) => {
                   e.target.onerror = null;
@@ -59,16 +63,16 @@ export default function LoginPage() {
             </div>
 
             {/* Title */}
-            <h1 className="text-center text-2xl font-bold text-red-700 mb-1 select-none">
+            <h1 className="text-center text-2xl font-bold text-red-700 mb-1 select-none animate-slide-in-down animate-stagger-1 text-glow">
               QUẢN LÝ ĐẢNG VIÊN ĐIỆN TỬ
             </h1>
-            <h2 className="text-center text-red-800 font-semibold mb-8 select-none">
+            <h2 className="text-center text-red-800 font-semibold mb-8 select-none animate-slide-in-down animate-stagger-2">
               ĐĂNG NHẬP
             </h2>
 
             {error && (
               <div
-                className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+                className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 animate-shake"
                 role="alert"
               >
                 <span className="block sm:inline">{error}</span>
@@ -76,7 +80,7 @@ export default function LoginPage() {
             )}
 
             {/* Form */}
-            <form onSubmit={handleLogin} className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6 animate-fade-in-up animate-stagger-3">
               {/* Username */}
               <div>
                 <label
@@ -91,7 +95,7 @@ export default function LoginPage() {
                   name="username"
                   placeholder="Nhập tài khoản"
                   required
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition input-focus"
                   autoComplete="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -114,7 +118,7 @@ export default function LoginPage() {
                     name="password"
                     placeholder="Nhập mật khẩu"
                     required
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition pr-10"
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition pr-10 input-focus"
                     autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -131,14 +135,17 @@ export default function LoginPage() {
               </div>
 
               {/* Submit */}
-              <button
+              <AnimatedButton
                 type="submit"
-                className="w-full bg-red-700 hover:bg-red-800 focus:bg-red-900 text-white font-semibold py-3 rounded-md transition disabled:opacity-50"
+                variant="danger"
+                size="large"
+                className="w-full hover-glow"
                 aria-label="Đăng nhập"
                 disabled={loading}
+                loading={loading}
               >
                 {loading ? "ĐANG ĐĂNG NHẬP..." : "ĐĂNG NHẬP"}
-              </button>
+              </AnimatedButton>
             </form>
 
             {/* Additional controls */}

@@ -17,6 +17,7 @@ import { AuthProvider } from "./auth/AuthProvider";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { PublicRoute } from "./auth/PublicRoute";
 import HoSoPage from "./page/user/hoso";
+import PageTransition from "./components/PageTransition";
 
 function App() {
   return (
@@ -25,28 +26,28 @@ function App() {
         <Routes>
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Layout />}>
-              <Route index element={<HomePage />} />
-              <Route path="about" element={<AboutPage />} />
-              <Route path="hoso" element={<HoSoPage />} />
+              <Route index element={<PageTransition><HomePage /></PageTransition>} />
+              <Route path="about" element={<PageTransition><AboutPage /></PageTransition>} />
+              <Route path="hoso" element={<PageTransition><HoSoPage /></PageTransition>} />
             </Route>
           </Route>
 
           <Route element={<ProtectedRoute requiredRole="admin" />}>
             <Route path="/admin" element={<AdminPage />}>
-              <Route index element={<HomeAdmin />} />
-              <Route path="dangvien" element={<DangVien />} />
-              <Route path="chibo" element={<ChiBo />} />
-              <Route path="lichtrinh" element={<LichTrinh />} />
-              <Route path="giaithuong" element={<GiaiThuong />} />
-              <Route path="danhgia" element={<DanhGia />} />
+              <Route index element={<PageTransition><HomeAdmin /></PageTransition>} />
+              <Route path="dangvien" element={<PageTransition><DangVien /></PageTransition>} />
+              <Route path="chibo" element={<PageTransition><ChiBo /></PageTransition>} />
+              <Route path="lichtrinh" element={<PageTransition><LichTrinh /></PageTransition>} />
+              <Route path="giaithuong" element={<PageTransition><GiaiThuong /></PageTransition>} />
+              <Route path="danhgia" element={<PageTransition><DanhGia /></PageTransition>} />
             </Route>
           </Route>
 
           <Route element={<PublicRoute />}>
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
           </Route>
 
-          <Route path="*" element={<Page404 />} />
+          <Route path="*" element={<PageTransition><Page404 /></PageTransition>} />
         </Routes>
       </AuthProvider>
       <ToastContainer />

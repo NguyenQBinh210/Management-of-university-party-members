@@ -6,11 +6,11 @@ import { RightSidebar } from "./RightSiteBar";
 const HomePage = () => {
   return (
     <>
-      <section className=" min-w-[320px] flex flex-col md:flex-row justify-between items-start gap-5 mx-6">
+      <section className=" min-w-[320px] flex flex-col md:flex-row justify-between items-start gap-5 mx-6 animate-fade-in-up">
         <div className="">
           {/* Lãnh tụ  */}
           <div
-            className=" bg-gradient-to-r from-red-200 to-red-300 text-red-800 font-semibold px-3 py-2 mb-4 rounded text-lg"
+            className=" bg-gradient-to-r from-red-200 to-red-300 text-red-800 font-semibold px-3 py-2 mb-4 rounded text-lg animate-slide-in-down"
             aria-live="polite"
             aria-atomic="true"
           >
@@ -52,7 +52,7 @@ const HomePage = () => {
           </div>
 
           <div
-            className="section-title bg-gradient-to-r from-red-200 to-red-300 text-red-800 font-semibold px-3 py-2 mb-4 rounded text-lg"
+            className="section-title bg-gradient-to-r from-red-200 to-red-300 text-red-800 font-semibold px-3 py-2 mb-4 rounded text-lg animate-slide-in-down animate-stagger-1"
             aria-live="polite"
             aria-atomic="true"
           >
@@ -96,7 +96,7 @@ const HomePage = () => {
           </nav>
           {/* Số liệu  */}
           <table
-            className="docs-table w-full border-collapse text-sm"
+            className="docs-table w-full border-collapse text-sm animate-fade-in-up animate-stagger-2"
             role="table"
             aria-label="Danh sách văn bản"
           >
@@ -122,7 +122,7 @@ const HomePage = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-gray-200">
+              <tr className="border-b border-gray-200 hover:bg-red-50 transition-colors duration-200">
                 <td className="p-3">303-QĐ/TW</td>
                 <td className="p-3">
                   Ban hành Quy chế làm việc mẫu của{" "}
@@ -133,7 +133,7 @@ const HomePage = () => {
                 <td className="p-3">01/07/2025</td>
                 <td className="file-icon p-3 text-center w-10 cursor-pointer">
                   <svg
-                    className="w-5 h-5 text-red-600 hover:text-red-800 transition-colors"
+                    className="w-5 h-5 text-red-600 hover:text-red-800 transition-colors hover-scale"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
