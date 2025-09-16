@@ -1,4 +1,3 @@
-
 import { LeaderCard } from "../../../components/LeaderCart";
 import Blog from "./Blog";
 import { RightSidebar } from "./RightSiteBar";
@@ -26,7 +25,7 @@ const HomePage = () => {
               }
             />
             <LeaderCard
-              imgSrc="https://tulieuvankien.dangcongsan.vn/Uploads/Images/Fred_Engels.png"
+              imgSrc="https://th.bing.com/th/id/OIP.Ug50-G09wVWZ6xi9ulSNfwHaFt?w=220&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3"
               alt="Chân dung Ph. Ảngghen với râu trắng dài"
               name="Ph. Ảngghen"
               href={
@@ -34,7 +33,7 @@ const HomePage = () => {
               }
             />
             <LeaderCard
-              imgSrc="https://tulieuvankien.dangcongsan.vn/Uploads/Images/Lenin.jpg"
+              imgSrc="https://th.bing.com/th/id/OIP.95c_ZihK98H9KmIGIN4FdAHaEu?w=293&h=187&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3"
               alt="Chân dung V. I. Lênin nghiêm túc trong veston"
               name="V. I. Lênin"
               href={
@@ -42,7 +41,7 @@ const HomePage = () => {
               }
             />
             <LeaderCard
-              imgSrc="https://tulieuvankien.dangcongsan.vn/Uploads/Images/HoChiMinh.jpg "
+              imgSrc="https://tse3.mm.bing.net/th/id/OIP.25XCtbEboTFyqL5kWu3WWAHaGJ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
               alt="Chân dung Hồ Chí Minh cười nhẹ, mặc áo màu sáng"
               name="Hồ Chí Minh"
               href={
@@ -230,7 +229,7 @@ const HomePage = () => {
           </div>
           <div className=" grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <LeaderCard
-              imgSrc="https://tulieuvankien.dangcongsan.vn/Uploads/Images/Tong-Bi-Thu.jpg"
+              imgSrc="https://th.bing.com/th/id/OIP.2RuZZaW7JR87simj6UMsUAHaE7?w=250&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3"
               alt="Tổng bí thư"
               name="Tổng bí thư"
               href={
@@ -238,7 +237,7 @@ const HomePage = () => {
               }
             />
             <LeaderCard
-              imgSrc="https://tulieuvankien.dangcongsan.vn/Uploads/Images/Chu-Tich-Nuoc.jpg"
+              imgSrc="https://th.bing.com/th/id/OIP.DlK1Na2iPE7TYZElZW8HSAHaEK?w=279&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3"
               alt="Chủ tịch nước"
               name="Chủ tịch nước"
               href={
@@ -246,17 +245,17 @@ const HomePage = () => {
               }
             />
             <LeaderCard
-              imgSrc="https://tulieuvankien.dangcongsan.vn/Uploads/Images/Thu-Tuong-Chinh-Phu.jpg"
+              imgSrc="https://th.bing.com/th/id/OIP.0gTh8NKeixnx5VloRzhhrAHaE8?w=278&h=185&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3"
               alt="Thủ tướng Chính phủ"
               name="Thủ tướng Chính phủ"
             />
             <LeaderCard
-              imgSrc="https://tulieuvankien.dangcongsan.vn/Uploads/Images/Chu-Tich-Quoc-Hoi.jpg "
+              imgSrc="https://th.bing.com/th/id/OIP.ZwGosqFlN__Vb6RZJvCoBAHaE7?w=260&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3"
               alt="Chủ tịch Quốc hội"
               href={
                 "https://tulieuvankien.dangcongsan.vn/lanh-dao-dang-nha-nuoc/chu-tich-quoc-hoi"
               }
-              name="Hồ Chí Minh"
+              name="Chủ tịch quốc hộc"
             />
           </div>
           {/* bài báo  */}
